@@ -1,0 +1,25 @@
+{
+  "name": "stock-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test!"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andiwinata/stock-app-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andiwinata/stock-app-server/issues"
+  },
+  "homepage": "https://github.com/andiwinata/stock-app-server#readme",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "request": "^2.79.0",
+    "urijs": "^1.18.8"
+  }
+}
