@@ -10,17 +10,18 @@ const SERVER_HOST = 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json';
 const API_KEY = 'WCQgfrbePtWCWzoooSjz';
 
 // allow cors from specific origin
-// let corsOptions = {
-//     origin: [
-//         /https?:\/\/localhost.*/, // localhost
-//         /https?:\/\/andiwinata\.github\.*/ // github pages
-//     ],
-//     optionSuccessStatus: 200
-// }
+let corsOptions = {
+    origin: [
+        /https?:\/\/localhost.*/, // localhost
+        /https?:\/\/andiwinata\.github\.*/ // github pages
+    ],
+    optionSuccessStatus: 200
+}
 
 let app = express();
-app.get('/', cors(), (req, res, next) => {
-    console.log(req.headers);
+app.use(cors(corsOptions));
+
+app.use('/', (req, res, next) => {
     let sourceUri = new URI(req.url);
     // get only parameter from the url
     let search = sourceUri.search();
