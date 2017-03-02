@@ -6,8 +6,8 @@ let request = require('request');
 let URI = require('urijs');
 let cors = require('cors');
 
-const SERVER_HOST = 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json';
-const API_KEY = 'WCQgfrbePtWCWzoooSjz';
+const SERVER_HOST = process.env.SERVER_HOST || '';
+const API_KEY = process.env.API_KEY || '';
 
 // allow cors from specific origin
 let corsOptions = {
@@ -22,12 +22,17 @@ let app = express();
 app.use(cors(corsOptions));
 
 app.use('/', (req, res, next) => {
+    if (!(SERVER_HOST && API_KEY)) {
+        res.json({error: 'SERVER HOST and API_KEY has not been set!'});
+        return;
+    }
+
     let sourceUri = new URI(req.url);
     // get only parameter from the url
     let search = sourceUri.search();
 
     if (!search) {
-        res.json('Hey! Please add valid parameters!');
+        res.json({warning: 'Hey! Please add valid parameters!'});
         return;
     }
 
@@ -47,6 +52,6 @@ app.use('/', (req, res, next) => {
     req.pipe(request(targetUri.toString())).pipe(res);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 console.log(`Server is now running at port: ${PORT}!`);
