@@ -26,6 +26,11 @@ app.use('/', (req, res, next) => {
     // get only parameter from the url
     let search = sourceUri.search();
 
+    if (!search) {
+        res.json('Hey! Please add valid parameters!');
+        return;
+    }
+
     // construct target URI
     let targetUri = new URI(`${SERVER_HOST}${search}`)
         .normalizeProtocol()
