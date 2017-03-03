@@ -9,12 +9,16 @@ let cors = require('cors');
 const SERVER_HOST = process.env.SERVER_HOST || '';
 const API_KEY = process.env.API_KEY || '';
 
+let allowedOrigins = [/https?:\/\/andiwinata\.github\.*/]; // github pages
+
+// if in development allow local host too
+if (!process.env.IS_PROD) {
+    allowedOrigins.push(/https?:\/\/localhost.*/); // localhost
+}
+
 // allow cors from specific origin
 let corsOptions = {
-    origin: [
-        /https?:\/\/localhost.*/, // localhost
-        /https?:\/\/andiwinata\.github\.*/ // github pages
-    ],
+    origin: allowedOrigins,
     optionSuccessStatus: 200
 }
 
