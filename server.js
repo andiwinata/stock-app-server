@@ -12,7 +12,7 @@ const API_KEY = process.env.API_KEY || '';
 let allowedOrigins = [/https?:\/\/andiwinata\.github\.*/]; // github pages
 
 // if in development allow local host too
-if (!process.env.IS_PROD) {
+if (process.env.IS_PROD != 'true') {
     allowedOrigins.push(/https?:\/\/localhost.*/); // localhost
 }
 
