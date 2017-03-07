@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/andiwinata/stock-app-server#readme",
   "dependencies": {
+    "compression": "^1.6.2",
     "cors": "^2.8.1",
     "express": "^4.14.1",
     "request": "^2.79.0",

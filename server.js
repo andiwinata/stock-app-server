@@ -1,6 +1,7 @@
 // Inspired by:
 // https://blog.javascripting.com/2015/01/17/dont-hassle-with-cors/
 
+let compression = require('compression');
 let express = require('express');
 let request = require('request');
 let URI = require('urijs');
@@ -23,6 +24,7 @@ let corsOptions = {
 }
 
 let app = express();
+app.use(compression());
 app.use(cors(corsOptions));
 
 app.use('/', (req, res, next) => {
