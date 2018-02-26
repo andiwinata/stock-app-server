@@ -20,7 +20,7 @@ if (process.env.IS_PROD != 'true') {
 // allow cors from specific origin
 let corsOptions = {
     origin: allowedOrigins,
-    optionSuccessStatus: 200
+    optionsSuccessStatus: 200
 }
 
 let app = express();
